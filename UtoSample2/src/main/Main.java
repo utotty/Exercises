@@ -1,6 +1,6 @@
 package main;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class Main {
 		DataManager dm = new DataManager();
 
 		// file
-		ArrayList<Integer> fileValues = dm.getData(0);
+		List<Integer> fileValues = dm.getData(0);
 
 		// ファイルの内容を出力
 		System.out.println("<FILE>");
@@ -19,7 +19,7 @@ public class Main {
 		}
 
 		// DB
-		ArrayList<Integer> dbValues = dm.getData(1);
+		List<Integer> dbValues = dm.getData(1);
 
 		// DBの参照結果を出力
 		System.out.println("\n<DB>");
