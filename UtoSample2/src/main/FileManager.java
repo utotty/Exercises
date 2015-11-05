@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FileManager implements ResourceManager {
 	private static final FileManager instance = new FileManager();
-	// TODO newされる事がないから間違いではありませんが、staticの方が良いと思います。メモリ上の話になりますが。。。
+
 	private final String filePath = "C:\\Users\\t-nakamura\\git\\Exercises\\UtoSample2\\file\\sample.csv";
 	private List<Integer> fileValues = null;
 
@@ -20,7 +20,7 @@ public class FileManager implements ResourceManager {
 		return instance;
 	}
 
-	// TODO ArrayListは具象クラスです。。。DataManagerのコメントを参考に、、、、
+
 	public List<Integer> getData() {
 		if (fileValues != null) {
 			return fileValues;
