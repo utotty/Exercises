@@ -9,6 +9,7 @@ import java.util.Collections;
 
 public class FileManager {
 	private static final FileManager instance = new FileManager();
+	// TODO newされる事がないから間違いではありませんが、staticの方が良いと思います。メモリ上の話になりますが。。。
 	private final String filePath = "C:\\Users\\t-nakamura\\pleiades\\workspace-pleiades\\UtoSample2\\file\\sample.csv";
 	private ArrayList<Integer> fileValues = null;
 
@@ -18,6 +19,7 @@ public class FileManager {
 		return instance;
 	}
 
+	// TODO ArrayListは具象クラスです。。。DataManagerのコメントを参考に、、、、
 	public ArrayList<Integer> getData() {
 		if (fileValues != null) {
 			return fileValues;
@@ -25,6 +27,7 @@ public class FileManager {
 
 		ArrayList<Integer> fileValues = new ArrayList<Integer>();
 
+		// TODO Exception発生時に、各種ReaderがCloseしていません
 		try {
 			// ファイル読み込み
 			FileReader fr     = new FileReader(filePath);

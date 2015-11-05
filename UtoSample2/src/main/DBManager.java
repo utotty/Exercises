@@ -11,6 +11,8 @@ import java.util.Collections;
 public class DBManager {
 	private static final DBManager instance = new DBManager();
 	private Connection conn         = null;
+	
+	// TODO newされる事がないから間違いではありませんが、staticの方が良いと思います。メモリ上の話になりますが。。。
 	private final String datasource = "jdbc:mysql://localhost/utosample";
 	private final String user       = "sample";
 	private final String password   = "sample";
@@ -31,6 +33,8 @@ public class DBManager {
 		ArrayList<Integer> dbValues = new ArrayList<Integer>();
 
 		try {
+			// TODO thisを付けるなら、、、、統一した方が良いですね。。。
+			// DB切断が、Exception発生時に出来ていませんね。
 			// DBからデータ参照
 			this.conn = DriverManager.getConnection(this.datasource, this.user, this.password);
 
