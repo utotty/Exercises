@@ -28,10 +28,12 @@ public class FileManager implements ResourceManager {
 		List<Integer> fileValues = new ArrayList<Integer>();
 
 		// TODO Exception発生時に、各種ReaderがCloseしていません
+		FileReader fr     = null;
 		BufferedReader br = null;
 		try {
 			// ファイル読み込み
-			br = new BufferedReader(new FileReader(filePath));
+			fr = new FileReader(filePath);
+			br = new BufferedReader(fr);
 
 			String line;
 			while ((line = br.readLine()) != null) {
@@ -45,6 +47,10 @@ public class FileManager implements ResourceManager {
 			try {
 				if (br != null) {
 					br.close();
+				}
+
+				if (fr != null) {
+					fr.close();
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
