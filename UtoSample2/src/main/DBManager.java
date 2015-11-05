@@ -31,6 +31,8 @@ public class DBManager implements ResourceManager {
 
 		List<Integer> dbValues = new ArrayList<Integer>();
 
+		PreparedStatement pstmt = null;
+		ResultSet rs            = null;
 		try {
 			// DBからデータ参照
 			conn = DriverManager.getConnection(datasource, user, password);
@@ -39,8 +41,8 @@ public class DBManager implements ResourceManager {
 			String sql = "SELECT text FROM sortTable";
 
 			// クエリの実行
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs            = pstmt.executeQuery();
+			pstmt = conn.prepareStatement(sql);
+			rs    = pstmt.executeQuery();
 
 			// 参照結果の格納
 			while (rs.next()) {
@@ -50,9 +52,17 @@ public class DBManager implements ResourceManager {
 			e.printStackTrace();
 		} finally {
 			try {
+				// TODO これだと、ResultSetがNullの場合、Exception発生します。
+				if (rs != null) {
+					rs.close();
+				}
+
+				// TODO これだと、PreparedStatementがNullの場合、Exception発生します。
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
 				if (conn != null) {
-					// TODO これだと、ResultSetがNullの場合、Exception発生します。
-					// TODO これだと、PreparedStatementがNullの場合、Exception発生します。
 					conn.close();
 				}
 			} catch (SQLException e) {
