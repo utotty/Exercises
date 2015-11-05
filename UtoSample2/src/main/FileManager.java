@@ -20,7 +20,6 @@ public class FileManager implements ResourceManager {
 		return instance;
 	}
 
-
 	public List<Integer> getData() {
 		if (fileValues != null) {
 			return fileValues;
@@ -29,12 +28,10 @@ public class FileManager implements ResourceManager {
 		List<Integer> fileValues = new ArrayList<Integer>();
 
 		// TODO Exception発生時に、各種ReaderがCloseしていません
-		FileReader fr     = null;
 		BufferedReader br = null;
 		try {
 			// ファイル読み込み
-			fr = new FileReader(filePath);
-			br = new BufferedReader(fr);
+			br = new BufferedReader(new FileReader(filePath));
 
 			String line;
 			while ((line = br.readLine()) != null) {
@@ -47,13 +44,11 @@ public class FileManager implements ResourceManager {
 		} finally {
 			try {
 				if (br != null) {
-					// 終了
 					br.close();
 				}
 			} catch (IOException e) {
-					e.printStackTrace();
+				e.printStackTrace();
 			}
-
 		}
 
 		// ArrayListの内容をソート
