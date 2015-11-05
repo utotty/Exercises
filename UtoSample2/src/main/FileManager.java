@@ -27,7 +27,6 @@ public class FileManager implements ResourceManager {
 
 		List<Integer> fileValues = new ArrayList<Integer>();
 
-		// TODO Exception発生時に、各種ReaderがCloseしていません
 		FileReader fr     = null;
 		BufferedReader br = null;
 		try {

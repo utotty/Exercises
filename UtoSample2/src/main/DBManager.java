@@ -52,12 +52,10 @@ public class DBManager implements ResourceManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				// TODO これだと、ResultSetがNullの場合、Exception発生します。
 				if (rs != null) {
 					rs.close();
 				}
 
-				// TODO これだと、PreparedStatementがNullの場合、Exception発生します。
 				if (pstmt != null) {
 					pstmt.close();
 				}
